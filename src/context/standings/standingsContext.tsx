@@ -1,13 +1,21 @@
 import { createContext } from "react";
 
 export interface teamsInfoInterface {
-  standings: { name: string; logo: string; rank: number }[];
+  note: {
+    rank: number;
+  };
+  team: {
+    name: string;
+    logos: {
+      href: "";
+    }[];
+  };
 }
 
 export interface standingInterface {
   name: string;
   seasonDisplay: string;
-  standings: [teamsInfoInterface] | null;
+  standings: teamsInfoInterface[] | null;
   getTeamStandings: (id: string, seasonyear: string) => void;
 }
 
