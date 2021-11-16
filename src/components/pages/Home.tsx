@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useContext, Fragment } from "react";
 import LeagueContext from "./../../context/leagues/leagueContext";
 import Card from "@mui/material/Card";
@@ -11,8 +10,8 @@ import { styled } from "@mui/material/styles";
 import { leaguesInterface } from "../../context/leagues/leagueContext";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import { makeStyles } from "@mui/styles";
+import { useNavigate } from "react-router-dom";
+
 interface Props {}
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -23,6 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Home = (props: Props) => {
+  const navigate = useNavigate();
   const leagueContext = useContext(LeagueContext);
   const { leaguesData, loading, error, getAllLeagues } =
     leagueContext as leaguesInterface;
@@ -31,6 +31,11 @@ const Home = (props: Props) => {
       getAllLeagues();
     } catch (error) {}
   }, []);
+
+  const exploreLeague = (id: string) => {
+    console.log("Button clicked");
+    navigate(`/LeagueDetails/${id}`);
+  };
 
   return (
     <Grid container spacing={2}>
@@ -53,8 +58,14 @@ const Home = (props: Props) => {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">Share</Button>
-                    <Button size="small">Learn More</Button>
+                    <Button
+                      size="small"
+                      onClick={(event: React.MouseEvent<HTMLElement>) => {
+                        exploreLeague(leagues.id);
+                      }}
+                    >
+                      Explore League
+                    </Button>
                   </CardActions>
                 </Card>
               </Item>

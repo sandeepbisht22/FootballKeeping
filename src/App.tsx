@@ -10,37 +10,42 @@ import LeagueDetails from "./components/pages/LeagueDetails";
 import SeasonsAvailable from "./components/pages/SeasonsAvailable";
 import Standings from "./components/pages/Standings";
 import LeagueState from "./context/leagues/LeagueState";
-
+import LeagueDetailsState from "./context/leagueDetails/LeagueDetailsState";
 function App() {
   return (
     <div className="App" style={{ backgroundColor: "#2e7d32" }}>
       <LeagueState>
-        <Router>
-          <Box
-            sx={{
-              display: "flex",
-              p: 1,
-              mb: 2,
-              bgcolor: "success.main",
-              border: 2,
-              borderColor: "white",
-            }}
-          >
-            <Header></Header>
-            <Box sx={{ ml: 1 }}>
-              <b>Football Keeping</b>
+        <LeagueDetailsState>
+          <Router>
+            <Box
+              sx={{
+                display: "flex",
+                p: 1,
+                mb: 2,
+                bgcolor: "success.main",
+                border: 2,
+                borderColor: "white",
+              }}
+            >
+              <Header></Header>
+              <Box sx={{ ml: 1 }}>
+                <b>Football Keeping</b>
+              </Box>
             </Box>
-          </Box>
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/LeagueDetails" element={<LeagueDetails />}></Route>
-            <Route
-              path="/SeasonsAvailable"
-              element={<SeasonsAvailable />}
-            ></Route>
-            <Route path="/Standings" element={<Standings />}></Route>
-          </Routes>
-        </Router>
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route
+                path="/LeagueDetails/:id"
+                element={<LeagueDetails />}
+              ></Route>
+              <Route
+                path="/SeasonsAvailable"
+                element={<SeasonsAvailable />}
+              ></Route>
+              <Route path="/Standings" element={<Standings />}></Route>
+            </Routes>
+          </Router>
+        </LeagueDetailsState>
       </LeagueState>
 
       {/* <UserInfoDisplay
