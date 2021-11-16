@@ -37,7 +37,6 @@ const LeagueState: React.FunctionComponent<Props> = (props) => {
       type: "ALL_LEAGUES",
       payload: res.data.data,
     });
-    console.log("data is before" + JSON.stringify(res.data.data));
   };
 
   return (

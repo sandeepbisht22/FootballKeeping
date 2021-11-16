@@ -2,7 +2,7 @@ import { leaguesInterface, leagueInterface } from "./leagueContext";
 
 type leagueAction = {
   type: "ALL_LEAGUES";
-  payload: leagueInterface;
+  payload: [leagueInterface];
 };
 
 export default (state: leaguesInterface, action: leagueAction) => {
@@ -10,7 +10,7 @@ export default (state: leaguesInterface, action: leagueAction) => {
     case "ALL_LEAGUES":
       return {
         ...state,
-        leaguesData: [action.payload, ...state.leaguesData!],
+        leaguesData: action.payload,
       };
     default:
       return state;

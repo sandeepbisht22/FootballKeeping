@@ -43,10 +43,10 @@ function App() {
         </Router>
       </LeagueState>
 
-      <UserInfoDisplay
+      {/* <UserInfoDisplay
         text="Sandeep"
         person={{ firstName: "", lastName: "" }}
-      ></UserInfoDisplay>
+      ></UserInfoDisplay> */}
     </div>
   );
 }
