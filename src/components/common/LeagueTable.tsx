@@ -12,9 +12,13 @@ import { useNavigate } from "react-router-dom";
 
 interface Props {
   leagueInfo: [LeagueDetailsInterface] | null;
+  leagueId: string;
 }
 
-const LeagueTable: React.FC<Props> = ({ leagueInfo }: Props): ReactElement => {
+const LeagueTable: React.FC<Props> = ({
+  leagueInfo,
+  leagueId,
+}: Props): ReactElement => {
   const navigate = useNavigate();
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -36,8 +40,8 @@ const LeagueTable: React.FC<Props> = ({ leagueInfo }: Props): ReactElement => {
     },
   }));
 
-  const callStandings = () => {
-    navigate("/Standings");
+  const callStandings = (id: string, year: string) => {
+    navigate(`/Standings/${id}/${year}`);
   };
   return (
     <Fragment>
@@ -56,7 +60,9 @@ const LeagueTable: React.FC<Props> = ({ leagueInfo }: Props): ReactElement => {
               leagueInfo.map((season) => (
                 <StyledTableRow
                   key={season.displayName}
-                  onClick={callStandings}
+                  onClick={(event: React.MouseEvent<HTMLElement>) => {
+                    callStandings(leagueId, season.year);
+                  }}
                 >
                   <StyledTableCell component="th" scope="row">
                     {season.displayName}

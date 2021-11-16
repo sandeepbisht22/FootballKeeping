@@ -2,8 +2,8 @@ import React, { ReactElement, useEffect, useContext, Fragment } from "react";
 import { useParams } from "react-router-dom";
 
 import LeagueDetailsContext from "../../context/leagueDetails/leagueDetailsContext";
-import { allSeasonInterface } from "../../context/leagueDetails/leagueDetailsContext";
 import LeagueTable from "../common/LeagueTable";
+import { allSeasonInterface } from "../../context/leagueDetails/leagueDetailsContext";
 
 const LeagueDetails: React.FC = (): JSX.Element => {
   const params = useParams();
@@ -16,7 +16,7 @@ const LeagueDetails: React.FC = (): JSX.Element => {
   return (
     <Fragment>
       <div>League Details</div>
-      <LeagueTable leagueInfo={allSeasons}></LeagueTable>
+      <LeagueTable leagueInfo={allSeasons} leagueId={params.id!}></LeagueTable>
     </Fragment>
   );
 };
