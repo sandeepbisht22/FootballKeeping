@@ -31,9 +31,6 @@ function App() {
                 }}
               >
                 <Header></Header>
-                <Box sx={{ ml: 1 }}>
-                  <b>Football Keeping</b>
-                </Box>
               </Box>
               <Routes>
                 <Route path="/" element={<Home />}></Route>
